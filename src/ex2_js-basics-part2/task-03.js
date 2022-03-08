@@ -1,23 +1,31 @@
-/* eslint linebreak-style: ["error", "windows"] */
+function evenOddZeroNumbers(arrIn) {
+  let even = 0;
+  let odd = 0;
+  let zero = 0;
 
-const inputArray = [1, null, 2];
-const outputArray = [];
-function evenOddZeroNumbers(arrIn, arrOut = []) {
-  const arrEven = arrIn.filter((elem) => elem % 2 === 0 && elem !== null && elem !== 0
+  const arrInOnlyNumbers = arrIn.filter((elem) => elem !== null
     && Number.isInteger(elem) === true);
 
-  const arrOdd = arrIn.filter((elem) => elem % 2 === 1 && elem !== null
-    && Number.isInteger(elem) === true);
+  for (let i = 0; i < arrInOnlyNumbers.length; i += 1) {
+    if (arrInOnlyNumbers[i] % 2 === 0 && arrInOnlyNumbers[i] !== 0) {
+      even += 1;
+    }
 
-  const arrZero = arrIn.filter((elem) => elem === 0);
+    if (arrIn[i] % 2 === 1) {
+      odd += 1;
+    }
 
-  arrOut.push(arrEven.length);
-  arrOut.push(arrOdd.length);
-  arrOut.push(arrZero.length);
+    if (arrIn[i] === 0) {
+      zero += 1;
+    }
+  }
 
+  const arrOut = [even, odd, zero];
   console.log(arrOut);
+
   return arrOut;
 }
-evenOddZeroNumbers(inputArray, outputArray);
+
+evenOddZeroNumbers();
 
 module.exports = evenOddZeroNumbers;
