@@ -20,10 +20,9 @@ function evenOddZeroNumbers(arrIn) {
     }
   }
 
-  const arrOut = [even, odd, zero];
-  console.log(arrOut);
+  console.log([even, odd, zero]);
 
-  return arrOut;
+  return [even, odd, zero];
 }
 
 evenOddZeroNumbers();
