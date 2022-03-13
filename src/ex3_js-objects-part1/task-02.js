@@ -1,5 +1,5 @@
 function showObject(obj) {
-  console.log(Object.entries(obj));
+  Object.entries(obj).forEach((el) => console.log(el));
 
   return undefined;
 }

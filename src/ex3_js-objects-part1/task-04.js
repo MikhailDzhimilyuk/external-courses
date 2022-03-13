@@ -1,5 +1,5 @@
 function createNewProperty(key, obj) {
-  const newObj = JSON.parse(JSON.stringify(obj));
+  const newObj = { ...obj };
 
   if (!(newObj.hasOwnProperty(key))) {
     newObj[key] = 'new';

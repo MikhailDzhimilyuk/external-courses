@@ -7,22 +7,22 @@ function deepClone(obj) {
     return obj;
   }
 
-  let Clone;
+  let clone;
 
   if (obj instanceof Array) {
-    Clone = [];
+    clone = [];
   } else {
-    Clone = {};
+    clone = {};
   }
 
   // eslint-disable-next-line no-restricted-syntax
   for (const key in obj) {
     if (obj.hasOwnProperty(key)) {
-      Clone[key] = deepClone(obj[key]);
+      clone[key] = deepClone(obj[key]);
     }
   }
 
-  return Clone;
+  return clone;
 }
 
 module.exports = deepClone;
