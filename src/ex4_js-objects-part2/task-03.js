@@ -1,8 +1,9 @@
 function getStringTrim(str) {
   const strArr = str.split('');
 
-  strArr.shift();
-  strArr.pop();
+  if (strArr[str.length - 1] === ' ') { strArr.pop(); }
+
+  if (strArr[0] === ' ') { strArr.shift(); }
 
   return strArr.join('');
 }

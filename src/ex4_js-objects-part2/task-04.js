@@ -1,11 +1,5 @@
 function getCapitalizeString(str) {
-  const strArr = str.split('');
-  const str0Up = str[0].toUpperCase();
-
-  strArr.shift();
-  strArr.unshift(str0Up);
-
-  return strArr.join('');
+  return str[0].toUpperCase() + str.substring(1);
 }
 
 module.exports = getCapitalizeString;

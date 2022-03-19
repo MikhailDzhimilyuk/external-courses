@@ -1,20 +1,11 @@
 function calcIdenticalSymbols(str) {
-  const strArr = str.split('');
+  const result = {};
 
-  for (let i = 0; i < strArr.length; i += 1) {
-    let identicalSymbols = 1;
+  str.split('').forEach((a) => {
+    result[a] = result[a] + 1 || 1;
+  });
 
-    for (let j = 0; j < strArr.length; j += 1) {
-      if (strArr[i] === strArr[j] && i !== j) {
-        identicalSymbols += 1;
-        delete strArr[j];
-      }
-    }
-
-    if (strArr[i] !== undefined) {
-      console.log(`Cимволов ${strArr[i]} в строке: ${identicalSymbols}`);
-    }
-  }
+  Object.entries(result).forEach(([symbol, numOfRepeat]) => console.log([symbol, numOfRepeat]));
 }
 
 module.exports = calcIdenticalSymbols;

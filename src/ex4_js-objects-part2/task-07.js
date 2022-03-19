@@ -1,15 +1,9 @@
-function getShortenedString(str, length) {
-  const shortenedStrArr = [];
-
-  str.split('');
-
-  for (let i = 0; i < length - 1; i += 1) {
-    shortenedStrArr.push(str[i]);
+function getShortenedString(str, num) {
+  if (str.length > num) {
+    return `${str.substring(0, num - 1)}…`;
   }
 
-  shortenedStrArr[length] = '…';
-
-  return shortenedStrArr.join('');
+  return str;
 }
 
 module.exports = getShortenedString;

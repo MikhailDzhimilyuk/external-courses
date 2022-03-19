@@ -1,11 +1,5 @@
 function checkString(str, searchString) {
-  const strArr = str.split(' ');
-
-  for (let i = 0; i < strArr.length; i += 1) {
-    if (strArr[i] === searchString) { return true; }
-  }
-
-  return false;
+  return str.includes(searchString);
 }
 
 module.exports = checkString;

@@ -1,5 +1,5 @@
 function getProtProperty(key, obj) {
-  return obj.__proto__[key];
+  return Object.getPrototypeOf(obj)[key];
 }
 
 module.exports = getProtProperty;

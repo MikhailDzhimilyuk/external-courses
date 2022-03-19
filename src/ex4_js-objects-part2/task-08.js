@@ -1,21 +1,9 @@
 function getlowerCamelCase(str) {
-  const resultArr = [];
+  let newStr = str.replace(/\S/g, (symb) => symb.toLowerCase());
 
-  str.split('');
+  newStr = newStr.replace(/(\s)\S/g, (symb) => symb.toUpperCase()).split(' ').join('');
 
-  for (let i = 0; i < str.length; i += 1) {
-    let elemStr = str[i];
-
-    if (elemStr === ' ') {
-      i += 1;
-      elemStr = str[i];
-      resultArr.push(elemStr.toUpperCase());
-    } else {
-      resultArr.push(elemStr.toLowerCase());
-    }
-  }
-
-  return resultArr.join('');
+  return newStr[0].toLowerCase() + newStr.substring(1);
 }
 
 module.exports = getlowerCamelCase;
