@@ -31,10 +31,6 @@ function calc() {
       return multiply;
     },
     getResult() {
-      if (isFinite(res)) { return res; }
-
-      res = 'Ошибка';
-
       return res;
     },
     reset() {
