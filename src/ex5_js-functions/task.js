@@ -17,7 +17,7 @@ function calc() {
       return subtract;
     },
     divide: function divide(x) {
-      if (!isNaN(x)) {
+      if (!isNaN(x) && x !== 0) {
         res /= x;
       }
 
