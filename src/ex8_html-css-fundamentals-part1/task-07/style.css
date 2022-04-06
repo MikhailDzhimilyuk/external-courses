@@ -1,0 +1,52 @@
+div {
+    margin: 50px;
+    height: 50px;
+    width: 100px;
+}
+#div1 {
+    background-color:red;
+    box-shadow: 3px 3px 0 0 #FF5555, 6px 6px 0 0 #FF9999;
+}
+    
+#div2 {
+    background-color: #008000;
+    position: relative;
+}
+    
+#div2::after, div::before {
+    content: '';
+    position: absolute;
+    width: 100%; height: 100%;
+    z-index: -2;
+}
+    
+#div2::after {
+    background: #00D000;
+    top: 3px; left: 3px;
+}
+    
+#div2::before {
+    background: #00F000;
+    top: 6px; left: 6px;
+}
+    
+#div3_1 {
+    background-color: #0000FF;
+    position: relative;
+    margin: 56px;
+}
+    
+#div3_2 {
+    background-color: #0000CC;
+}
+    
+#div3_3 {
+    background-color: #0000AA;
+}
+    
+#div3_2, #div3_3 {
+    position: relative;
+    margin: 0;
+    right: 3px;
+    bottom: 3px;
+}
