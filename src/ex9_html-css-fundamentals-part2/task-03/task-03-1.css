@@ -1,0 +1,15 @@
+.table1 {
+    width: 600px;
+    border-collapse: collapse;
+    color: #526380;
+    font-family: "Arial";
+    font-size: 0.9em;
+}
+
+.tr1:nth-child(even) {
+    background: #f5f9ff;
+}
+
+.tr1:nth-child(odd) {
+    background: #e9eef9;
+}

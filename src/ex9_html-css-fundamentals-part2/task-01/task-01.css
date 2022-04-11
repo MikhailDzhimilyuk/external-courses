@@ -1,0 +1,27 @@
+.part {
+    border-radius: 50%;
+    width: 500px;
+    height: 500px;
+    margin: 0 auto;
+    transform-origin: 50% 50%;
+    overflow: hidden;
+}
+
+.difficult, .difficult div {
+    margin: 0 auto;
+    overflow: hidden;
+    width: 400px;
+    height: 450px;
+}
+
+.difficult {
+    transform: rotate(120deg);	
+}
+
+.difficult1 {
+    transform: rotate(-60deg);
+}
+
+.difficult2 {
+    transform: rotate(-60deg);
+}
