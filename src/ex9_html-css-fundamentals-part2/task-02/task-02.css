@@ -1,0 +1,101 @@
+.radio1, .radio2 {
+    box-sizing: border-box;
+    appearance: none;
+    background:  linear-gradient(#FFFFFF 0%, #DDDDDD 20%);
+    outline: 1.2px solid grey;
+    width: 10px;
+    height: 10px;
+    margin-bottom: 2px;
+    margin-right: 5px;
+}
+
+.radio1:checked, .radio2:checked {
+    background: #347ff7;
+    border: 1.3px solid white;
+    outline: 1.2px solid #347ff7;
+}
+
+.radio1 {
+    border-radius: 100%;
+}
+
+.radio2 {
+    border-radius: 15%;
+}
+
+.select1 {
+    font: inherit;
+    letter-spacing: inherit;
+    word-spacing: inherit;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.select1:not([multiple]) {
+    padding-right: 1.2em;
+    background-repeat: no-repeat;
+    background-position: calc(100% - 0.25em) 0.35em;
+    background-size: 0.55em auto;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Cpath d='M70.3 13.8L40 66.3 9.7 13.8z' fill='%23000'%3E%3C/path%3E%3C/svg%3E");
+}
+
+.file-input1::-webkit-file-upload-button {
+    background: linear-gradient(#FFFFFF 0%, #e6e6e6 60%);
+    border: 1.2px solid grey;
+}
+
+.div1 {
+    display: flex;
+    align-items: end;
+    margin-top: 15px;
+}
+
+.div2 {
+    margin-left: 5px;
+    margin-bottom: 2px;
+    padding-left: 10px;
+    border: solid black 1px;
+    width: 175px;
+    height: 153px;
+    overflow-y: scroll
+}
+
+.div2 b {
+    margin-left: -10px;
+}
+
+.range1 {
+    -webkit-appearance: none;
+    margin: 10px;
+    width: 140px;
+}
+
+.range1:focus {
+    outline: none;
+}
+
+.range1::-webkit-slider-runnable-track {
+    height: 4.5px;
+    cursor: pointer;
+    animate: 0.2s;
+    background: #e8dedc;
+}
+
+.range1::-webkit-slider-thumb {
+    border: 1px solid grey;
+    height: 23px;
+    width: 11px;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -9.5px;
+    background:linear-gradient(to bottom, #e8e4e3 34%, grey 34%, grey 38%, #e8e4e3 38%, #e8e4e3 48%, grey 48%, grey 52%, #e8e4e3 52%, #e8e4e3 62%, grey 62%, grey 66%, #e8e4e3 66%, #e8e4e3 100%);
+    box-shadow: inset 0 0 0 2.5px #e8e4e3;
+}
+
+.submit1, .reset1 {
+    margin-right: 5px;
+    background: linear-gradient(white 5%, #d9d9d9 95%);
+    border: solid grey 1px;
+    border-radius: 5%;
+}
