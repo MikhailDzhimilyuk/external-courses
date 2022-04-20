@@ -11,26 +11,11 @@
 <body>
     <div class="background-loader"><div class="loader"></div></div>
 
-    <script>
-        function elemCloseTimer(elem, timer) {
-            function closeElem() {
-                document.querySelector(elem).style.display = 'none';
-            }
-
-            setTimeout(closeElem, timer);
-        }
-
-        window.onload = function(){elemCloseTimer('.background-loader', 0)};
-        elemCloseTimer('.background-ball', 9000);
-    </script>
-
     <div class="background-ball">
         <div class="block"><div class="ball"></div></div>
         <div class="block"></div>
     </div>
 
     <div class="figure-background"><div class="figure"></div></div>
-
-    <iframe class="iframe" width="500px" height="300px" src="https://www.youtube.com/embed/адрес_ролика" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </body>
 </html>
