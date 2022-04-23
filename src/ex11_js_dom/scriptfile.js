@@ -16,10 +16,14 @@ document.querySelector('.left').onclick = function () {
 
   setTimeout(slider, 0);
   images[current].classList.add('prev');
+  document.getElementById('left').disabled = true;
 
-  function removePrev() { images[current].classList.remove('prev'); }
+  function clearLeft() {
+    images[current].classList.remove('prev');
+    document.getElementById('left').disabled = false;
+  }
 
-  setTimeout(removePrev, 1100);
+  setTimeout(clearLeft, 1100);
 };
 
 document.querySelector('.right').onclick = function () {
@@ -28,8 +32,12 @@ document.querySelector('.right').onclick = function () {
   if (current + 1 === images.length) { current = 0; } else { current += 1; }
 
   images[current].classList.add('next');
+  document.getElementById('right').disabled = true;
 
-  function removeNext() { images[current].classList.remove('next'); }
+  function clearRight() {
+    images[current].classList.remove('next');
+    document.getElementById('right').disabled = false;
+  }
 
-  setTimeout(removeNext, 1100);
+  setTimeout(clearRight, 1100);
 };
