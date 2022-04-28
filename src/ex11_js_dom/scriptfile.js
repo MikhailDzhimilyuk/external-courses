@@ -1,3 +1,9 @@
+for (let n = 1; n <= 5; n += 1) {
+  const image = document.createElement('img');
+  image.src = `img/${n}.jpg`;
+  document.querySelector('.slider').appendChild(image);
+}
+
 const images = document.querySelectorAll('.slider img');
 let current = 0;
 
@@ -11,33 +17,22 @@ function slider() {
 
 slider();
 
-document.querySelector('.left').onclick = function () {
-  if (current === 0) { current = images.length - 1; } else { current -= 1; }
+function sliderAnimation(direction) {
+  if (direction === 'next') {
+    if (current + 1 === images.length) { current = 0; } else { current += 1; }
+  } else if (current === 0) { current = images.length - 1; } else { current -= 1; }
 
-  setTimeout(slider, 0);
-  images[current].classList.add('prev');
-  document.getElementById('left').disabled = true;
+  slider();
+  images[current].classList.add(direction);
+  document.getElementById(direction).disabled = true;
 
-  function clearLeft() {
-    images[current].classList.remove('prev');
-    document.getElementById('left').disabled = false;
+  function cleaner() {
+    images[current].classList.remove(direction);
+    document.getElementById(direction).disabled = false;
   }
 
-  setTimeout(clearLeft, 1100);
-};
+  setTimeout(cleaner, 1100);
+}
 
-document.querySelector('.right').onclick = function () {
-  setTimeout(slider, 0);
-
-  if (current + 1 === images.length) { current = 0; } else { current += 1; }
-
-  images[current].classList.add('next');
-  document.getElementById('right').disabled = true;
-
-  function clearRight() {
-    images[current].classList.remove('next');
-    document.getElementById('right').disabled = false;
-  }
-
-  setTimeout(clearRight, 1100);
-};
+document.querySelector('.right').addEventListener('click', () => sliderAnimation('next'));
+document.querySelector('.left').addEventListener('click', () => sliderAnimation('prev'));

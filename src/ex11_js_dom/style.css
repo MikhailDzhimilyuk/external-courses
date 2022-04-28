@@ -49,7 +49,6 @@
     height: 100px;
     width: 100px;
     background: url("img/left.png");
-    no-repeat;
     background-size: contain;
     border-radius: 50%;
     border: 0;
