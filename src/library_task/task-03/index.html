@@ -10,30 +10,22 @@
 
 <body>
     <header class="header">
-        <form action="page/help.html" target="_blank">
-            <button class="button1">Help Center</button>
-        </form>
+        <button class="btn-header">Help Center</button>
         <span class="span1">•</span>
-        <form action="page/support.html" target="_blank">
-            <button class="button1" id="button1">Our Support</button>
-        </form>
-        <form method="GET" name="authorization" onsubmit="return false;">
-            <div class="div1">
-                <input type="file" accept="image/*" name="avatar" id="avatar" class="avatar">
-                <label class="label1" for="avatar"><img class="avatar" src="img/avatar.png" alt=""></label>
-                <input type="text" name="name" value="" class="input1" placeholder="Your name">
-                <input type="submit" value="" class="ok">
-            </div>
-        </form>
+        <button class="btn-header" id="btn-support">Our Support</button>
+        <div class="registration-form">
+            <input type="file" accept="image/*" name="avatar" id="avatar" class="avatar">
+            <label class="label-avatar" for="avatar"><img class="avatar" src="img/avatar.png" alt=""></label>
+            <input type="text" name="name" value="" class="input-name" placeholder="Your name">
+            <button class="btn-ok"></button>
+        </div>
     </header>
 
     <main class="main"></main>
 
     <footer class="footer">
-        <div class="div2"><a href="mailto:mdzhimilyuk@mail.ru"><img src="img/question.png" alt="mailto:mdzhimilyuk@mail.ru" class="mailto"></div>
-        <form action="page/settings.html" target="_blank">
-            <button class="button2"><img src="img/settings.png" alt="settings" class="settings"></button>
-        </form>
+        <a class="mailto" href="mailto:mdzhimilyuk@mail.ru"><img src="img/question.png" alt="mailto:mdzhimilyuk@mail.ru" class="mailto-img"></a>
+        <button class="btn-settings"><img src="img/settings.png" alt="settings" class="settings-img"></button>
     </footer>
 </body>
 </html>
