@@ -1,11 +1,11 @@
 @font-face {
     font-family: 'FontAwesome';
-    src: url('../assets/fonts/FontAwesome.otf') format('opentype');
+    src: url('assets/fonts/FontAwesome.otf') format('opentype');
 }
 
 @font-face {
     font-family: 'Proxima Nova Regular';
-    src: url('../assets/fonts/Proxima Nova Regular.otf') format('opentype');
+    src: url('assets/fonts/Proxima Nova Regular.otf') format('opentype');
 }
 
 .header {
