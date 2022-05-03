@@ -1,0 +1,125 @@
+@font-face {
+    font-family: 'FontAwesome';
+    src: url('../assets/fonts/FontAwesome.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Proxima Nova Regular';
+    src: url('../assets/fonts/Proxima Nova Regular.otf') format('opentype');
+}
+
+.header {
+    font-family: 'FontAwesome';
+    height: 45px;
+    background: #2f3648;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-header, .registration-form {
+    height: 100%;
+    width: 95px;
+    background: #2f3648;
+    color: #79839e;
+    border: 0;
+    margin-left: 0px;
+}
+
+.span1 {
+    display: flex;
+    align-items: center;
+    color: #1c2335;
+}
+
+#btn-support {
+    margin-right: 9px;
+}
+
+.registration-form {
+    width: 158px;
+    background: #17a9ef;
+    display: flex;
+    align-items: center;
+    padding-left: 7px;
+}
+
+.avatar, .avatar:active, .avatar:hover, .avatar:focus {
+    height: 30px;
+    width: 30px;
+    margin-left: 4px;
+    margin-right: 11px;
+    border-radius: 50%;
+    outline: 2px solid white;
+    outline-offset:-2px;
+    background-image: url("img/avatar.png");
+    background-size: cover;
+}
+
+.label-avatar {
+    margin-top: 4px;
+    position: relative;
+    right: 45px;
+}
+
+.input-name {
+    position: relative;
+    right: 45px;
+    color: white;
+    background: #17a9ef;
+    width: 65px;
+    border: 0;
+}
+
+.input-name:active, :hover, :focus {
+    outline: 0;
+    outline-offset: 0;
+}
+
+.input-name::-webkit-input-placeholder {
+    color: white;
+}
+
+.btn-ok {
+    position: absolute;
+    height: 12px;
+    width: 12px;
+    margin-left: 124px;
+    border-radius: 50%;
+    border: 0;
+    background-image: url("img/ok.png");
+    background-size: cover;
+}
+
+button:hover, .avatar:hover, .ok:hover {
+    cursor: pointer;
+}
+
+.footer {
+    font-family: 'FontAwesome';
+    height: 45px;
+    background: #171f2a;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-settings, .mailto {
+    height: 45px;
+    width: 55px;
+    border: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mailto {
+    background: #1f2638; 
+}
+
+.btn-settings {
+    background: #17a9ef;
+}
+
+.settings-img, .mailto-img {
+    height: 15px;
+    width: 15px;
+}
