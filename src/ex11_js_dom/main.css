@@ -44,12 +44,12 @@ body {
     color: #79839e;
 }
 
-.btn-left-panel:active, .btn-left-panel:focus {
+.btn-left-panel-active {
     background: #0ea5fa;
     color: #ffffff;
 }
 
-.btn-filters:active, .btn-filters:focus {
+.btn-filters-active {
     background: #0ea5fa;
     color: #ffffff;
 }
@@ -61,7 +61,7 @@ body {
     opacity: 0;
 }
 
-.btn-left-panel:active .blue-img, .btn-left-panel:focus .blue-img{
+.btn-left-panel-active .blue-img, .btn-left-panel-focus .blue-img{
     opacity: 1;
 }
 
@@ -124,9 +124,10 @@ body {
     padding-right: 10px;
     font-size: 80%;
     background: #edf0f7;
+    color: #8d98b4;
 }
 
-.btn-browse:active, .btn-browse:focus {
+.btn-browse-active {
     background: #96b4ce;
     color: white;
 }
@@ -211,7 +212,7 @@ h1 {
     color: grey;
 }
 
-.hide-container {
+.hide-container, .hide-container2 {
     opacity: 0;
     position: absolute;
 }
