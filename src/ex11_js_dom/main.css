@@ -155,6 +155,18 @@ h1 {
     padding-left: 20px;
 }
 
+.search::-webkit-input-placeholder { color: #79839e; }
+.search::-moz-placeholder { color: #79839e; }
+.search:-moz-placeholder { color: #79839e; }
+.search:-ms-input-placeholder { color: #79839e; }
+
+.search:-webkit-autofill,
+.search:-webkit-autofill:hover,
+.search:-webkit-autofill:focus,
+.search:-webkit-autofill:active {
+-webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
 .btn-search {
     height: 13px;
     width: 13px;
@@ -165,11 +177,6 @@ h1 {
     background-size: contain;
     border: 0;
 } 
-
-.search::-webkit-input-placeholder { color: #79839e; }
-.search::-moz-placeholder { color: #79839e; }
-.search:-moz-placeholder { color: #79839e; }
-.search:-ms-input-placeholder { color: #79839e; }
 
 .middot-red, .middot-orange, .middot-blue, .middot-purple {
     font-size: 170%;
@@ -212,7 +219,68 @@ h1 {
     color: grey;
 }
 
-.hide-container, .hide-container2 {
+.hide-container, .hide-container2, .hide-container3 {
+    z-index: -1;
     opacity: 0;
     position: absolute;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background: rgb(0,0,0,0.8);
+}
+
+.modal-content {
+    margin: 10% auto;
+    padding: 20px;
+    height: 200px;
+    width: 30%;
+    background: #2b3346;
+}
+
+.close, .accept {
+    float: right;
+    width: 20px;
+    height: 20px;
+    background-image: url(img/close.png);
+    background-size: contain;
+    border: 0;
+}
+
+.accept {
+    background-image: url(img/accept.png);
+    margin-top: 50px;
+}
+
+.inp-tittle {
+    margin-top: 10%;
+}
+
+.inp-tittle, .inp-author {
+    font-size: 100%;
+    width: 95%;
+    height: 10%;
+    margin-bottom: 2%;
+}
+
+.book-cover {
+    display: none;
+}
+
+.modal label {
+    background: white;
+    font-size: 150%;
+}
+
+.modal label:hover {
+    cursor: pointer;
+    background: #17a9ef; 
+    color: white;
 }

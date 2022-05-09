@@ -23,6 +23,17 @@
     </header>
 
     <main class="content">
+        <div class="modal">
+            <div class="modal-content">
+                <button class="close"></button>
+                <input type="text" name="title" value="" class="inp-tittle" placeholder="Tittle"> <br>
+                <input type="text" name="author" value="" class="inp-author" placeholder="Author">
+                <input type="file" accept="image/*" name="book-cover" id="book-cover" class="book-cover">
+                <label for="book-cover">Insert book cover</label>
+                <button class="accept"></button>
+            </div>
+        </div>
+
         <div class="left-panel">
             <div class="add-a-book">
                 <button class="btn-add"><img src="img/cross.png" alt="" class="img-cross">ADD A BOOK</button>
@@ -52,8 +63,8 @@
             <button class="btn-browse btn-most-recent">Most Recent</button>
             <button class="btn-browse btn-most-popular">Most Popular</button>
             <button class="btn-browse btn-free-books" id="free-book">Free Books</button>
-            <input type="text" name="search" value="" class="search" placeholder="Enter Keywords"> <hr class="hr1">
-            <button class="btn-search"></button>
+                <input type="text" name="search" value="" class="search" placeholder="Enter Keywords"> <hr class="hr1">
+                <button class="btn-search"></button>
         </div>
 
         <div class="list-books">
