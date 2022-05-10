@@ -31,40 +31,37 @@ const nonFiction = [0, 1, 0, 1, 0, 1, 0, 1, 0, 1];
 const freeBooks = [0, 0, 1, 0, 1, 0, 1, 0, 1, 1]; 
 const ratings = [5, 5, 4.5, 4, 4.5, 4, 5, 4, 5, 3.5];
 
-for (let i = 0; i < titles.length; i += 1) {
-  const d = document.createElement('div');
-  d.className = 'container';
-  document.querySelector('.list-books').appendChild(d);
-  d.id = `container${[i]}`;
-  
-  function containerClassAdd(arrayElem, classNameAdd) {
-    if (arrayElem === 1) { document.querySelector(`#container${[i]}`).classList.add(classNameAdd); }
+function containerClassAdd(arrayElem, classNameAdd, currentElem) {
+  if (arrayElem === 1) { document.querySelector(`#container${[currentElem]}`).classList.add(classNameAdd); }
+}
+
+function clearFilter(hideElem, currElem) {
+  document.querySelector(`#container${[currElem]}`).classList.remove(hideElem);
+}
+
+function showFilter(className, currElem) {
+  let hideClass = 'hide-container';
+
+  if (className === 'free-books' || className === 'most-recent' || className === 'most-popular') { clearFilter('hide-container2', currElem); hideClass = 'hide-container2'; } else { clearFilter('hide-container', currElem); }
+
+  if (!document.querySelector(`#container${[currElem]}`).classList.contains(className)) {
+    document.querySelector(`#container${[currElem]}`).classList.add(hideClass);
   }
+}
 
-  containerClassAdd(mustReadTitles[i], 'must-read-titles');
-  containerClassAdd(bestOfList[i], 'best-of-list');
-  containerClassAdd(classicNovels[i], 'classic-novels');
-  containerClassAdd(nonFiction[i], 'non-fiction');
-  containerClassAdd(freeBooks[i], 'free-books');
+function createRating(i, j, fullStar, halfStar, emptyStar) {
+  if (ratings[i] - j >= 1) { document.querySelector(`.star${[i]}${[j]}`).appendChild(fullStar); }
+  else if (ratings[i] - j >= 0.5) { document.querySelector(`.star${[i]}${[j]}`).appendChild(halfStar); }
+  else if (ratings[i] - j <= 0) { document.querySelector(`.star${[i]}${[j]}`).appendChild(emptyStar); }
+}
 
-  if (ratings[i] === 5) { document.querySelector(`#container${[i]}`).classList.add('most-popular'); }
+function removeRating(currElem) {
+  for (let k = 0; k <= 4; k += 1) {
+    document.querySelector(`.star${[currElem]}${[k]}`).removeChild(document.querySelector(`.star${[currElem]}${[k]}`).firstChild);
+  }
+}
 
-  const image = document.createElement('img');
-  image.src = `img/books/${titles[i]}.png`;
-  document.querySelector(`#container${[i]}`).appendChild(image);
-
-  document.querySelector(`#container${[i]}`).appendChild(document.createElement('br'));
-  const title = document.createElement('span');
-  title.className = `titles${[i]}`;
-  document.querySelector(`#container${[i]}`).appendChild(title);
-  document.querySelector(`.titles${[i]}`).innerHTML = titles[i];
-
-  document.querySelector(`#container${[i]}`).appendChild(document.createElement('br'));
-  const author = document.createElement('span');
-  author.className = `authors${[i]}`;
-  document.querySelector(`#container${[i]}`).appendChild(author);
-  document.querySelector(`.authors${[i]}`).innerHTML = `by ${authors[i]}`;
-
+function changeRatingSite(i) { 
   const rating = document.createElement('div');
   rating.className = 'rating';
   document.querySelector(`#container${[i]}`).appendChild(rating);
@@ -83,52 +80,68 @@ for (let i = 0; i < titles.length; i += 1) {
     fullStar.src = 'img/full star.png';
     halfStar.src = 'img/half star.png';
 
-    function createRating() {
-      if (ratings[i] - j >= 1) { document.querySelector(`.star${[i]}${[j]}`).appendChild(fullStar); }
-      else if (ratings[i] - j >= 0.5) { document.querySelector(`.star${[i]}${[j]}`).appendChild(halfStar); }
-      else if (ratings[i] - j <= 0) { document.querySelector(`.star${[i]}${[j]}`).appendChild(emptyStar); }
-    }
-  
-    createRating();
-
-    function removeRating() {
-      for (let k = 0; k <= 4; k += 1) {
-        document.querySelector(`.star${[i]}${[k]}`).removeChild(document.querySelector(`.star${[i]}${[k]}`).firstChild);
-      }
-    }
+    createRating(i, j, fullStar, halfStar, emptyStar);
 
     document.querySelector(`.star${[i]}${[j]}`).addEventListener('click', () => {
       ratings[i] = j + 1;
-      removeRating();
+      removeRating(i);
     });
 
     document.querySelector(`#rating${[i]}`).addEventListener('click', () => {
-      createRating();
+      createRating(i, j, fullStar, halfStar, emptyStar);
+      if (ratings[i] === 5) { document.querySelector(`#container${[i]}`).classList.add('most-popular'); } 
+      else { document.querySelector(`#container${[i]}`).classList.remove('most-popular'); }
     });
   }
+}
 
-  function clearFilter(hideElem) { //eslint-disable-line
-    document.querySelector(`#container${[i]}`).classList.remove(hideElem);
-  }
+function addTittleAuthor(i) {
+  document.querySelector(`#container${[i]}`).appendChild(document.createElement('br'));
+  const title = document.createElement('span');
+  title.className = `titles${[i]}`;
+  document.querySelector(`#container${[i]}`).appendChild(title);
+  document.querySelector(`.titles${[i]}`).innerHTML = titles[i];
 
-  function showFilter(className) { //eslint-disable-line
-    let hideClass = 'hide-container';
+  document.querySelector(`#container${[i]}`).appendChild(document.createElement('br'));
+  const author = document.createElement('span');
+  author.className = `authors${[i]}`;
+  document.querySelector(`#container${[i]}`).appendChild(author);
+  document.querySelector(`.authors${[i]}`).innerHTML = `by ${authors[i]}`; 
+}
 
-    if (className === 'free-books' || className === 'most-recent' || className === 'most-popular') { clearFilter('hide-container2'); hideClass = 'hide-container2'; } else { clearFilter('hide-container'); }
+function createContainer(i) {
+  const d = document.createElement('div');
+  d.className = 'container';
+  document.querySelector('.list-books').appendChild(d);
+  d.id = `container${[i]}`;
+}
 
-    if (!document.querySelector(`#container${[i]}`).classList.contains(className)) {
-      document.querySelector(`#container${[i]}`).classList.add(hideClass);
-    }
-  }
+for (let i = 0; i < titles.length; i += 1) {
+  createContainer(i);
 
-  document.querySelector('.btn-filters-mrt').addEventListener('click', () => showFilter('must-read-titles'));
-  document.querySelector('.btn-filters-bol').addEventListener('click', () => showFilter('best-of-list'));
-  document.querySelector('.btn-filters-cn').addEventListener('click', () => showFilter('classic-novels'));
-  document.querySelector('.btn-filters-nf').addEventListener('click', () => showFilter('non-fiction'));
-  document.querySelector('.btn-free-books').addEventListener('click', () => showFilter('free-books'));
-  document.querySelector('.btn-most-recent').addEventListener('click', () => showFilter('most-recent'));
-  document.querySelector('.btn-most-popular').addEventListener('click', () => showFilter('most-popular'));
-  document.querySelector('#btn-all-books').addEventListener('click', () => {clearFilter('hide-container'); clearFilter('hide-container2'); clearFilter('hide-container3')});
+  containerClassAdd(mustReadTitles[i], 'must-read-titles', i);
+  containerClassAdd(bestOfList[i], 'best-of-list', i);
+  containerClassAdd(classicNovels[i], 'classic-novels', i);
+  containerClassAdd(nonFiction[i], 'non-fiction', i);
+  containerClassAdd(freeBooks[i], 'free-books', i);
+
+  if (ratings[i] === 5) { document.querySelector(`#container${[i]}`).classList.add('most-popular'); }
+
+  const image = document.createElement('img');
+  image.src = `img/books/${titles[i]}.png`;
+  document.querySelector(`#container${[i]}`).appendChild(image);
+
+  addTittleAuthor(i);
+  changeRatingSite(i);
+
+  document.querySelector('.btn-filters-mrt').addEventListener('click', () => showFilter('must-read-titles', i));
+  document.querySelector('.btn-filters-bol').addEventListener('click', () => showFilter('best-of-list', i));
+  document.querySelector('.btn-filters-cn').addEventListener('click', () => showFilter('classic-novels', i));
+  document.querySelector('.btn-filters-nf').addEventListener('click', () => showFilter('non-fiction', i));
+  document.querySelector('.btn-free-books').addEventListener('click', () => showFilter('free-books', i));
+  document.querySelector('.btn-most-recent').addEventListener('click', () => showFilter('most-recent', i));
+  document.querySelector('.btn-most-popular').addEventListener('click', () => showFilter('most-popular', i));
+  document.querySelector('#btn-all-books').addEventListener('click', () => {clearFilter('hide-container', i); clearFilter('hide-container2', i); clearFilter('hide-container3', i)});
 
   function searchFunc(text) {
     if (titles[i] !== text && authors[i] !== text) {
@@ -186,11 +199,11 @@ document.querySelector(".btn-filters-cn").addEventListener('click', () => { acti
 document.querySelector(".btn-filters-nf").addEventListener('click', () => { activeButton("btn-filters", ".btn-filters-nf", "btn-filters-active"); });
 
 document.querySelector(".btn-add").addEventListener('click', () => {
-    document.querySelector(".modal").style.display = "block";
+  document.querySelector(".modal").style.display = "block";
 });
 
 document.querySelector(".close").addEventListener('click', () => {
-    document.querySelector(".modal").style.display = "none";
+  document.querySelector(".modal").style.display = "none";
 });
 
 document.querySelector(".accept").addEventListener('click', () => {
@@ -203,71 +216,29 @@ document.querySelector(".accept").addEventListener('click', () => {
   nonFiction[nonFiction.length] = 0;
   freeBooks[freeBooks.length] = 0; 
 
-  const d = document.createElement('div');
-  d.className = 'container';
-  document.querySelector('.list-books').appendChild(d);
-  d.id = `container${[authors.length - 1]}`;
+  createContainer(authors.length - 1);
 
-  let image = document.createElement('img');
+  const image = document.createElement('img');
   image.src = `img/books/${document.querySelector('.book-cover').files[0].name}`;
   document.querySelector(`#container${[authors.length - 1]}`).appendChild(image);
 
-  document.querySelector(`#container${[authors.length - 1]}`).appendChild(document.createElement('br'));
-  const title = document.createElement('span');
-  title.className = `titles${[authors.length - 1]}`;
-  document.querySelector(`#container${[authors.length - 1]}`).appendChild(title);
-  document.querySelector(`.titles${[authors.length - 1]}`).innerHTML = titles[authors.length - 1];
-
-  document.querySelector(`#container${[authors.length - 1]}`).appendChild(document.createElement('br'));
-  const author = document.createElement('span');
-  author.className = `authors${[authors.length - 1]}`;
-  document.querySelector(`#container${[authors.length - 1]}`).appendChild(author);
-  document.querySelector(`.authors${[authors.length - 1]}`).innerHTML = `by ${authors[authors.length - 1]}`;
-
-  const rating = document.createElement('div');
-  rating.className = 'rating';
-  document.querySelector(`#container${[authors.length - 1]}`).appendChild(rating);
-  rating.id = `rating${[authors.length - 1]}`;
-
-  for (let j = 0; j <= 4; j += 1) {
-    const star = document.createElement('span');
-    star.className = `star${[authors.length - 1]}${[j]}`;
-    document.querySelector(`#rating${[authors.length - 1]}`).appendChild(star);
-
-    const emptyStar = document.createElement('img');
-    const fullStar = document.createElement('img');
-    const halfStar = document.createElement('img');
-
-    emptyStar.src = 'img/empty star.png';
-    fullStar.src = 'img/full star.png';
-    halfStar.src = 'img/half star.png';
-
-    function createRating() {
-      if (ratings[authors.length - 1] - j >= 1) { document.querySelector(`.star${[authors.length - 1]}${[j]}`).appendChild(fullStar); }
-      else if (ratings[authors.length - 1] - j >= 0.5) { document.querySelector(`.star${[authors.length - 1]}${[j]}`).appendChild(halfStar); }
-      else if (ratings[authors.length - 1] - j <= 0) { document.querySelector(`.star${[authors.length - 1]}${[j]}`).appendChild(emptyStar); }
-    }
-
-    createRating();
-
-    function removeRating() {
-      for (let k = 0; k <= 4; k += 1) {
-        document.querySelector(`.star${[authors.length - 1]}${[k]}`).removeChild(document.querySelector(`.star${[authors.length - 1]}${[k]}`).firstChild);
-      }
-    }
-
-    document.querySelector(`.star${[authors.length - 1]}${[j]}`).addEventListener('click', () => {
-      ratings[authors.length - 1] = j + 1;
-      removeRating();
-    });
-
-    document.querySelector(`#rating${[authors.length - 1]}`).addEventListener('click', () => {
-      createRating();
-      if (ratings[authors.length-1] === 5) { document.querySelector(`#container${[authors.length-1]}`).classList.add('most-popular'); } 
-      else { document.querySelector(`#container${[authors.length-1]}`).classList.remove('most-popular'); }
-    });
-  }
+  addTittleAuthor(authors.length - 1);
+  changeRatingSite(authors.length - 1);
 
   document.querySelector(`#container${[authors.length - 1]}`).classList.add('most-recent');
+  containerClassAdd(mustReadTitles[titles.length - 1], 'must-read-titles', titles.length - 1);
+  containerClassAdd(bestOfList[bestOfList.length - 1], 'best-of-list', bestOfList.length - 1);
+  containerClassAdd(classicNovels[classicNovels.length - 1], 'classic-novels', classicNovels.length - 1);
+  containerClassAdd(nonFiction[nonFiction.length - 1], 'non-fiction', nonFiction.length - 1);
+  containerClassAdd(freeBooks[freeBooks.length - 1], 'free-books', freeBooks.length - 1);
+
+  document.querySelector('.btn-filters-mrt').addEventListener('click', () => showFilter('must-read-titles', authors.length - 1));
+  document.querySelector('.btn-filters-bol').addEventListener('click', () => showFilter('best-of-list', authors.length - 1));
+  document.querySelector('.btn-filters-cn').addEventListener('click', () => showFilter('classic-novels', authors.length - 1));
+  document.querySelector('.btn-filters-nf').addEventListener('click', () => showFilter('non-fiction', authors.length - 1));
+  document.querySelector('.btn-free-books').addEventListener('click', () => showFilter('free-books', authors.length - 1));
+  document.querySelector('.btn-most-recent').addEventListener('click', () => showFilter('most-recent', authors.length - 1));
+  document.querySelector('.btn-most-popular').addEventListener('click', () => showFilter('most-popular', authors.length - 1));
+  document.querySelector('#btn-all-books').addEventListener('click', () => {clearFilter('hide-container', authors.length - 1); clearFilter('hide-container2', authors.length - 1); clearFilter('hide-container3', authors.length - 1)});
   document.querySelector(".modal").style.display = "none";
 });
