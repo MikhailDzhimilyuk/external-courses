@@ -211,6 +211,7 @@ h1 {
 .rating {
     display: flex;
 }
+
 .rating img {
     margin-top: 3px;
     height: 13px;
