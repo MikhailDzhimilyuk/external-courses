@@ -220,4 +220,3 @@ document.querySelector(".accept").addEventListener('click', () => {
 
   document.querySelector(".modal").style.display = "none";
 });
-
