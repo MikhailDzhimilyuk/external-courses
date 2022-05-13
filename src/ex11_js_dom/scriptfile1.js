@@ -1,14 +1,14 @@
 const books = [
-{titles: 'Jewels of Nizam', authors: 'Geeta Devi', mustReadTitles: 1, bestOfList: 1, classicNovels: 0, nonFiction: 0, freeBooks: 0, ratings: 5,},
-{titles: 'Cakes & Bakes', authors: 'Sanjeev Kapoor', mustReadTitles: 1, bestOfList: 1, classicNovels: 0, nonFiction: 1, freeBooks: 0, ratings: 5,},
-{titles: "Jamie's Kitchen", authors: 'Jamie Oliver', mustReadTitles: 1, bestOfList: 1, classicNovels: 1, nonFiction: 0, freeBooks: 1, ratings: 4.5,},
-{titles: 'Inexpensive Family Meals', authors: 'Simon Holst', mustReadTitles: 1, bestOfList: 0, classicNovels: 1, nonFiction: 1, freeBooks: 0, ratings: 4,},
-{titles: 'Paleo Slow Cooking', authors: 'Chrissy Gower', mustReadTitles: 1, bestOfList: 0, classicNovels: 0, nonFiction: 0, freeBooks: 1, ratings: 4.5,},
-{titles: 'Cook Like an Italian', authors: 'Tobie Puttock', mustReadTitles: 0, bestOfList: 0, classicNovels: 0, nonFiction: 1, freeBooks: 0, ratings: 4,},
-{titles: 'Suneeta Vaswani', authors: 'Geeta Devi', mustReadTitles: 0, bestOfList: 1, classicNovels: 1, nonFiction: 0, freeBooks: 1, ratings: 5,},
-{titles: 'Jamie Does', authors: 'Jamie Oliver', mustReadTitles: 0, bestOfList: 1, classicNovels: 1, nonFiction: 1, freeBooks: 0, ratings: 4,},
-{titles: "Jamie's Italy", authors: 'Jamie Oliver', mustReadTitles: 0, bestOfList: 1, classicNovels: 0, nonFiction: 0, freeBooks: 1, ratings: 5,},
-{titles: 'Vegetables Cookbook', authors: 'Mathhew Biggs', mustReadTitles: 0, bestOfList: 0, classicNovels: 0, nonFiction: 1, freeBooks: 1, ratings: 3.5,},
+{titles: 'Jewels of Nizam', authors: 'Geeta Devi', mustReadTitles: 1, bestOfList: 1, classicNovels: 0, nonFiction: 0, freeBooks: 0, ratings: 5, num: 0,},
+{titles: 'Cakes & Bakes', authors: 'Sanjeev Kapoor', mustReadTitles: 1, bestOfList: 1, classicNovels: 0, nonFiction: 1, freeBooks: 0, ratings: 5, num: 1,},
+{titles: "Jamie's Kitchen", authors: 'Jamie Oliver', mustReadTitles: 1, bestOfList: 1, classicNovels: 1, nonFiction: 0, freeBooks: 1, ratings: 4.5, num: 2,},
+{titles: 'Inexpensive Family Meals', authors: 'Simon Holst', mustReadTitles: 1, bestOfList: 0, classicNovels: 1, nonFiction: 1, freeBooks: 0, ratings: 4, num: 3,},
+{titles: 'Paleo Slow Cooking', authors: 'Chrissy Gower', mustReadTitles: 1, bestOfList: 0, classicNovels: 0, nonFiction: 0, freeBooks: 1, ratings: 4.5, num: 4,},
+{titles: 'Cook Like an Italian', authors: 'Tobie Puttock', mustReadTitles: 0, bestOfList: 0, classicNovels: 0, nonFiction: 1, freeBooks: 0, ratings: 4, num: 5,},
+{titles: 'Suneeta Vaswani', authors: 'Geeta Devi', mustReadTitles: 0, bestOfList: 1, classicNovels: 1, nonFiction: 0, freeBooks: 1, ratings: 5, num: 6,},
+{titles: 'Jamie Does', authors: 'Jamie Oliver', mustReadTitles: 0, bestOfList: 1, classicNovels: 1, nonFiction: 1, freeBooks: 0, ratings: 4, num: 7,},
+{titles: "Jamie's Italy", authors: 'Jamie Oliver', mustReadTitles: 0, bestOfList: 1, classicNovels: 0, nonFiction: 0, freeBooks: 1, ratings: 5, num: 8,},
+{titles: 'Vegetables Cookbook', authors: 'Mathhew Biggs', mustReadTitles: 0, bestOfList: 0, classicNovels: 0, nonFiction: 1, freeBooks: 1, ratings: 3.5, num: 9,},
 ];
 
 const buttonFilters = [
@@ -25,20 +25,6 @@ function containerClassAdd(objElem, classNameAdd, currentElem) {
   if (objElem === 1) { document.querySelector(`#container${[currentElem]}`).classList.add(classNameAdd); }
 }
 
-function clearFilter(hideElem, currElem) {
-  document.querySelector(`#container${[currElem]}`).classList.remove(hideElem);
-}
-
-function showFilter(className, currElem) {
-  let hideClass = 'hide-container';
-
-  if (className == 'free-books' || className == 'most-recent' || className == 'most-popular') { clearFilter('hide-container2', currElem); hideClass = 'hide-container2'; } else { clearFilter('hide-container', currElem); }
-
-  if (!document.querySelector(`#container${[currElem]}`).classList.contains(className)) {
-    document.querySelector(`#container${[currElem]}`).classList.add(hideClass);
-  }
-}
-
 function createRating(i, j, fullStar, halfStar, emptyStar) {
   if (books[i].ratings - j >= 1) { document.querySelector(`.star${[i]}${[j]}`).appendChild(fullStar); }
   else if (books[i].ratings - j >= 0.5) { document.querySelector(`.star${[i]}${[j]}`).appendChild(halfStar); }
@@ -52,16 +38,7 @@ function removeRating(currElem) {
 }
 
 function changeRatingSite(i) { 
-  const rating = document.createElement('div');
-  rating.className = 'rating';
-  document.querySelector(`#container${[i]}`).appendChild(rating);
-  rating.id = `rating${[i]}`;
-
   for (let j = 0; j <= 4; j += 1) {
-    const star = document.createElement('span');
-    star.className = `star${[i]}${[j]}`;
-    document.querySelector(`#rating${[i]}`).appendChild(star);
-
     const emptyStar = document.createElement('img');
     const fullStar = document.createElement('img');
     const halfStar = document.createElement('img');
@@ -85,61 +62,61 @@ function changeRatingSite(i) {
   }
 }
 
-function addTittleAuthor(i) {
-  document.querySelector(`#container${[i]}`).appendChild(document.createElement('br'));
-  const title = document.createElement('span');
-  title.className = `titles${[i]}`;
-  document.querySelector(`#container${[i]}`).appendChild(title);
-  document.querySelector(`.titles${[i]}`).innerHTML = books[i].titles;
-
-  document.querySelector(`#container${[i]}`).appendChild(document.createElement('br'));
-  const author = document.createElement('span');
-  author.className = `authors${[i]}`;
-  document.querySelector(`#container${[i]}`).appendChild(author);
-  document.querySelector(`.authors${[i]}`).innerHTML = `by ${books[i].authors}`; 
+function clearFilter(hideElem, currElem) {
+  document.querySelector(`#container${[currElem]}`).classList.remove(hideElem);
 }
 
-function createContainer(i) {
-  const d = document.createElement('div');
-  d.className = 'container';
-  document.querySelector('.list-books').appendChild(d);
-  d.id = `container${[i]}`;
+function showFilter(className, currElem) {
+  let hideClass = 'hide-container';
+
+  if (className == 'free-books' || className == 'most-recent' || className == 'most-popular') { clearFilter('hide-container2', currElem); hideClass = 'hide-container2'; } else { clearFilter('hide-container', currElem); }
+
+  if (!document.querySelector(`#container${[currElem]}`).classList.contains(className)) {
+    document.querySelector(`#container${[currElem]}`).classList.add(hideClass);
+  }
 }
 
-for (let i = 0; i < books.length; i += 1) {
-  createContainer(i);
+books.forEach((element) => {
+  const container = document.createElement('div');
+  container.className = 'container';
+  container.id = `container${element.num}`;
+  container.innerHTML = `<img src="img/books/${element.titles}.png"><br>
+  <span>${element.titles}</span><br>
+  <span>by ${element.authors}</span>
+  <div class="rating" id="rating${element.num}">
+    <span class="star${element.num}0"></span>
+    <span class="star${element.num}1"></span>
+    <span class="star${element.num}2"></span>
+    <span class="star${element.num}3"></span>
+    <span class="star${element.num}4"></span>
+  </div>`
+  document.querySelector(".list-books").appendChild(container);
+  
+  containerClassAdd(element.mustReadTitles, 'must-read-titles', element.num);
+  containerClassAdd(element.bestOfList, 'best-of-list', element.num);
+  containerClassAdd(element.classicNovels, 'classic-novels', element.num);
+  containerClassAdd(element.nonFiction, 'non-fiction', element.num);
+  containerClassAdd(element.freeBooks, 'free-books', element.num);
 
-  containerClassAdd(books[i].mustReadTitles, 'must-read-titles', i);
-  containerClassAdd(books[i].bestOfList, 'best-of-list', i);
-  containerClassAdd(books[i].classicNovels, 'classic-novels', i);
-  containerClassAdd(books[i].nonFiction, 'non-fiction', i);
-  containerClassAdd(books[i].freeBooks, 'free-books', i);
+  if (element.ratings === 5) { document.querySelector(`#container${[element.num]}`).classList.add('most-popular'); }
 
-  if (books[i].ratings === 5) { document.querySelector(`#container${[i]}`).classList.add('most-popular'); }
+  changeRatingSite(element.num);
 
-  const image = document.createElement('img');
-  image.src = `img/books/${books[i].titles}.png`;
-  document.querySelector(`#container${[i]}`).appendChild(image);
-
-  addTittleAuthor(i);
-  changeRatingSite(i);
-
-  buttonFilters.forEach(element => document.querySelector(Object.keys(element)).addEventListener('click', () => showFilter(Object.values(element), i)));
-
-  document.querySelector('#btn-all-books').addEventListener('click', () => {clearFilter('hide-container', i); clearFilter('hide-container2', i); clearFilter('hide-container3', i)});
+  buttonFilters.forEach(elem => document.querySelector(Object.keys(elem)).addEventListener('click', () => showFilter(Object.values(elem), element.num)));
+  document.querySelector('#btn-all-books').addEventListener('click', () => {clearFilter('hide-container', element.num); clearFilter('hide-container2', element.num); clearFilter('hide-container3', element.num)});
 
   function searchFunc(text) {
-    if (books[i].titles !== text && books[i].authors !== text) {
-      document.querySelector(`#container${[i]}`).classList.add('hide-container3');
+    if (element.titles !== text && element.authors !== text) {
+      document.querySelector(`#container${[element.num]}`).classList.add('hide-container3');
     }
 
     if (text == '') {
-      document.querySelector(`#container${[i]}`).classList.remove('hide-container3');
+      document.querySelector(`#container${[element.num]}`).classList.remove('hide-container3');
     }
   }
 
   document.querySelector('.btn-search').addEventListener('click', () => searchFunc(document.querySelector('.search').value));
-}
+});
 
 let prevClassName1 = 0;
 let prevClassName2 = 0;
@@ -209,15 +186,24 @@ document.querySelector(".accept").addEventListener('click', () => {
     nonFiction: 0,
     freeBooks: 0,
     ratings: 0,
+    num: books.length,
   };
 
-  createContainer(books.length - 1);
+  const container = document.createElement('div');
+  container.className = 'container';
+  container.id = `container${books.length - 1}`;
+  container.innerHTML = `<img src="img/books/${document.querySelector('.book-cover').files[0].name}"><br>
+  <span>${books[books.length - 1].titles}</span><br>
+  <span>by ${books[books.length - 1].authors}</span>
+  <div class="rating" id="rating${books.length - 1}">
+    <span class="star${books.length - 1}0"></span>
+    <span class="star${books.length - 1}1"></span>
+    <span class="star${books.length - 1}2"></span>
+    <span class="star${books.length - 1}3"></span>
+    <span class="star${books.length - 1}4"></span>
+  </div>`
+  document.querySelector(".list-books").appendChild(container);
 
-  const image = document.createElement('img');
-  image.src = `img/books/${document.querySelector('.book-cover').files[0].name}`;
-  document.querySelector(`#container${[books.length - 1]}`).appendChild(image);
-
-  addTittleAuthor(books.length - 1);
   changeRatingSite(books.length - 1);
 
   document.querySelector(`#container${[books.length - 1]}`).classList.add('most-recent');
@@ -227,8 +213,11 @@ document.querySelector(".accept").addEventListener('click', () => {
   containerClassAdd(books[books.length - 1].nonFiction, 'non-fiction', books.length - 1);
   containerClassAdd(books[books.length - 1].freeBooks, 'free-books', books.length - 1);
 
-  buttonFilters.forEach(element => document.querySelector(Object.keys(element)).addEventListener('click', () => showFilter(Object.values(element), books.length - 1)));
+  if (books[books.length - 1].ratings === 5) { document.querySelector(`#container${[books.length - 1]}`).classList.add('most-popular'); }
+
+  buttonFilters.forEach(elem => document.querySelector(Object.keys(elem)).addEventListener('click', () => showFilter(Object.values(elem), books.length - 1)));
   document.querySelector('#btn-all-books').addEventListener('click', () => {clearFilter('hide-container', books.length - 1); clearFilter('hide-container2', books.length - 1); clearFilter('hide-container3', books.length - 1)});
 
   document.querySelector(".modal").style.display = "none";
 });
+
