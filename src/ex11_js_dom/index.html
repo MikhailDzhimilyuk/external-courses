@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <link href="header+footer.css" rel="stylesheet">
+    <link href="main.css" rel="stylesheet">
+</head>
+
+<body>
+    <header class="header">
+        <button class="btn-header">Help Center</button>
+        <span class="span1">•</span>
+        <button class="btn-header" id="btn-support">Our Support</button>
+        <div class="registration-form">
+            <input type="file" accept="image/*" name="avatar" id="avatar" class="avatar">
+            <label class="label-avatar" for="avatar"><img class="avatar" src="img/avatar.png" alt=""></label>
+            <input type="text" name="name" value="" class="input-name" placeholder="Your name">
+            <button class="btn-ok"></button>
+        </div>
+    </header>
+
+    <main class="content">
+        <div class="modal">
+            <div class="modal-content">
+                <button class="close"></button>
+                <input type="text" name="title" value="" class="inp-tittle" placeholder="Tittle"> <br>
+                <input type="text" name="author" value="" class="inp-author" placeholder="Author">
+                <input type="file" accept="image/*" name="book-cover" id="book-cover" class="book-cover">
+                <label for="book-cover">Insert book cover</label>
+                <button class="accept"></button>
+            </div>
+        </div>
+
+        <div class="left-panel">
+            <div class="add-a-book">
+                <button class="btn-add"><img src="img/cross.png" alt="" class="img-cross">ADD A BOOK</button>
+            </div>
+            <div class="menu">
+                <button class="btn-left-panel btn-now-reading"><img src="img/book.png" alt="" class="img-left-panel"><img src="img/blue book.png" alt="" class="blue-img">Now Reading</button>
+                <button class="btn-left-panel btn-browse0"><img src="img/globus.png" alt="" class="img-left-panel"><img src="img/blue globus.png" alt="" class="blue-img">Browse</button>
+                <button class="btn-left-panel btn-buy-books"><img src="img/market.png" alt="" class="img-left-panel"><img src="img/blue market.png" alt="" class="blue-img">Buy Books</button>
+                <button class="btn-left-panel btn-favourite-books"><img src="img/star.png" alt="" class="img-left-panel"><img src="img/blue star.png" alt="" class="blue-img">Favourite Books</button>
+                <button class="btn-left-panel btn-wishlist"><img src="img/wishlist.png" alt="" class="img-left-panel"><img src="img/blue wishlist.png" alt="" class="blue-img">Wishlist</button>
+                <button class="btn-left-panel btn-history"><img src="img/clock.png" alt="" class="img-left-panel"><img src="img/blue clock.png" alt="" class="blue-img">History</button>
+            </div>
+            <div class="filters">
+                <button class="btn-filters btn-filters-mrt"><span class="middot-red">•</span>Must Read Titles</button>
+                <button class="btn-filters btn-filters-bol"><span class="middot-orange">•</span>Best Of List</button>
+                <button class="btn-filters btn-filters-cn"><span class="middot-blue">•</span>Classic Novels</button>
+                <button class="btn-filters btn-filters-nf"><span class="middot-purple">•</span>Non Fiction</button>
+            </div>
+            <div class="history-added">
+            
+            </div>
+        </div>
+
+        <div class="browse-books">
+            <h1>Browse Available Books</h1> <hr class="hr1">
+            <button class="btn-browse btn-all-books" id="btn-all-books">All Books</button>
+            <button class="btn-browse btn-most-recent">Most Recent</button>
+            <button class="btn-browse btn-most-popular">Most Popular</button>
+            <button class="btn-browse btn-free-books" id="free-book">Free Books</button>
+                <input type="text" name="search" value="" class="search" placeholder="Enter Keywords"> <hr class="hr1">
+                <button class="btn-search"></button>
+        </div>
+
+        <div class="list-books">
+        </div>
+    </main>
+
+    <footer class="footer">
+        <a class="mailto" href="mailto:mdzhimilyuk@mail.ru"><img src="img/question.png" alt="mailto:mdzhimilyuk@mail.ru" class="mailto-img"></a>
+        <button class="btn-settings"><img src="img/settings.png" alt="settings" class="settings-img"></button>
+    </footer>
+    <script src="scriptfile1.js"></script>
+</body>
+</html>
