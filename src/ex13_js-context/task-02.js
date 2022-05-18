@@ -4,13 +4,8 @@ function Hangman(word) {
   let errorsLeft = 6;
   let wrongSymbArr = [];
 
-  function method(val) {
-    return method[called](val);
-  }
-
-  method.guess = function(x) {
+  this.guess = function(x) {
     let wordLength = arrWord.length;
-    called = 'guess';
 
     for (let i = 0; i < arrWord.length; i += 1) {
       if (x == arrWord[i]) { guessArrWord[i] = x; wordLength -= 1; }
@@ -26,39 +21,32 @@ function Hangman(word) {
     return this;
   };
 
-  method.getGuessedString = function() {
+  this.getGuessedString = function() {
     console.log(guessArrWord.join(''))
-    called = 'getGuessedString';
     return this;
   };
 
-  method.getErrorsLeft = function() {
+  this.getErrorsLeft = function() {
     console.log(errorsLeft);
-    called = 'getErrorsLeft';
     return this;
   };
 
-  method.getWrongSymbols = function() {
+  this.getWrongSymbols = function() {
     console.log(wrongSymbArr);
-    called = 'getWrongSymbols';
     return this;
   };
 
-  method.getStatus = function() {
+  this.getStatus = function() {
     console.log(`${guessArrWord.join('')} | errors left: ${errorsLeft}`);
-    called = 'getStatus';
     return this;
   };
 
-  method.startAgain = function(word) {
+  this.startAgain = function(word) {
     arrWord = Array.from(word);
     guessArrWord = arrWord.map(el => el = '_');
     errorsLeft = 6;
-    called = 'startAgain';
     return this;
   };
-
-  return method;
 }
 
-let hangman = new Hangman('word');
+let hangman = new Hangman('webpurple');
