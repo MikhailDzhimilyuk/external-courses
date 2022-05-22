@@ -1,4 +1,4 @@
-function electricalDevice (power, switchOnOff) {
+function ElectricalDevice (power, switchOnOff) {
     this.switchOnOff = switchOnOff;
     this.power = power;
 
@@ -15,8 +15,8 @@ function electricalDevice (power, switchOnOff) {
     this.getInfo = function() { console.log(this); console.log(this.infoArr); };
 }
 
-function vacuumCleaner (power, switchOnOff, cleaningMode) {
-    electricalDevice.call(this, power, switchOnOff);
+function VacuumCleaner (power, switchOnOff, cleaningMode) {
+    ElectricalDevice.call(this, power, switchOnOff);
     this.cleaningMode = cleaningMode;
     this.infoArr.push(`Cleaning mode: ${cleaningMode}`);
 
@@ -29,11 +29,15 @@ function vacuumCleaner (power, switchOnOff, cleaningMode) {
     }
 }
 
-vacuumCleaner.prototype = Object.create(electricalDevice.prototype);
-vacuumCleaner.prototype.constructor = vacuumCleaner;
+VacuumCleaner.prototype = Object.create(ElectricalDevice.prototype);
+Object.defineProperty(VacuumCleaner.prototype, 'constructor', {
+    value: VacuumCleaner,
+    enumerable: false,
+    writable: true 
+});
 
-function robotCleaner (power, switchOnOff, cleaningMode, scanningTerrain) {
-    vacuumCleaner.call(this, power, switchOnOff, cleaningMode);
+function RobotCleaner (power, switchOnOff, cleaningMode, scanningTerrain) {
+    VacuumCleaner.call(this, power, switchOnOff, cleaningMode);
     this.scanningTerrain = scanningTerrain;
     this.infoArr.push('Scanning terrain: map is not defined');
 
@@ -54,11 +58,15 @@ function robotCleaner (power, switchOnOff, cleaningMode, scanningTerrain) {
     }
 }
 
-robotCleaner.prototype = Object.create(vacuumCleaner.prototype);
-robotCleaner.prototype.constructor = robotCleaner;
+RobotCleaner.prototype = Object.create(VacuumCleaner.prototype);
+Object.defineProperty(RobotCleaner.prototype, 'constructor', {
+    value: RobotCleaner,
+    enumerable: false,
+    writable: true 
+});
 
-function robotSoldier (power, switchOnOff, scanningTerrain, fire) {
-    electricalDevice.call(this, power, switchOnOff);
+function RobotSoldier (power, switchOnOff, scanningTerrain, fire) {
+    ElectricalDevice.call(this, power, switchOnOff);
     this.scanningTerrain = scanningTerrain;
     this.infoArr.push('Scanning terrain: map is not defined');
 
@@ -89,9 +97,9 @@ function robotSoldier (power, switchOnOff, scanningTerrain, fire) {
     }
 }
 
-robotSoldier.prototype = Object.create(electricalDevice.prototype);
-robotSoldier.prototype.constructor = robotSoldier;
-
-let VacuumCleaner = new vacuumCleaner(12, 'on', 'сухая');
-let RobotCleaner = new robotCleaner (100, 'on', 'влажная', 'on');
-let RobotSoldier = new robotSoldier (10000, 'on', 'on', 'on');
+RobotSoldier.prototype = Object.create(ElectricalDevice.prototype);
+Object.defineProperty(RobotSoldier.prototype, 'constructor', {
+    value: RobotSoldier,
+    enumerable: false,
+    writable: true 
+});

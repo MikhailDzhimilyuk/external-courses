@@ -114,13 +114,5 @@ class RobotSoldier extends ElectricalDevice {
     }
 }
 
-let VacuumCleaner1 = new VacuumCleaner('Пылесос', 1000, 'on', 'сухая');
-let RobotCleaner1 = new RobotCleaner('Робот-пылесос', 2000, 'off', 'сухая', 'on');
-let RobotSoldier1 = new RobotSoldier('Робот-солдат Арни', 10000, 'on', 'on', 'on');
-
 const electricalDevicesArr = [VacuumCleaner1.power, RobotCleaner1.power, RobotSoldier1.power];
 let summaryPower = electricalDevicesArr.map(i => x+=i, x=0).reverse()[0];
-console.log(summaryPower);
-VacuumCleaner1.searchElecDevice();
-RobotCleaner1.searchElecDevice();
-RobotSoldier1.searchElecDevice();
